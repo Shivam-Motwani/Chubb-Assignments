@@ -34,3 +34,15 @@ print("\nAverage transaction amount\n",avg_transaction)
 #Daily sales
 daily_sales = df.groupby("date")["total"].sum()
 print("\nDaily sales\n",daily_sales)
+
+#4 Perform simple cleaning (handle missing values, fix data types, drop duplicates).
+df["promo_code"].fillna("NO_PROMO", inplace=True) #missiing values
+df["customer_id"].fillna(-1, inplace=True)
+
+#Ensure correct numeric types
+df["quantity"] = df["quantity"].astype(int)
+df["unit_price"] = df["unit_price"].astype(float)
+df["total"] = df["total"].astype(float)
+
+#Drop duplicates
+df.drop_duplicates(inplace=True)
