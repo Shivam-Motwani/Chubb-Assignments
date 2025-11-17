@@ -1,0 +1,14 @@
+[
+    {
+        "store_name":"Airport",
+        "total":11.5
+    },
+    {
+        "store_name":"Downtown",
+        "total":16.2
+    },
+    {
+        "store_name":"Suburb",
+        "total":15.85
+    }
+]

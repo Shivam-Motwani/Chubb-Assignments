@@ -46,3 +46,30 @@ df["total"] = df["total"].astype(float)
 
 #Drop duplicates
 df.drop_duplicates(inplace=True)
+
+#5 Build a mini ETL pipeline: read CSV → clean & transform → output JSON.
+def sales_etl(df):
+    # Clean
+    df["date"] = pd.to_datetime(df["date"])
+    df["promo_code"].fillna("NO_PROMO", inplace=True)
+    df["customer_id"].fillna(-1, inplace=True)
+    df.drop_duplicates(inplace=True)
+
+    # Transform
+    df["is_weekend"] = df["date"].dt.weekday >= 5
+
+    # Summaries
+    store_summary = df.groupby("store_name")["total"].sum().reset_index()
+    daily_summary = df.groupby("date")["total"].sum().reset_index()
+
+    # Output JSON
+    store_summary.to_json("store_sales.json", orient="records", indent=4)
+    daily_summary.to_json("daily_sales.json", orient="records", indent=4)
+
+    return store_summary, daily_summary
+
+store_summary, daily_summary = sales_etl(df)
+
+print("\nStore Summary\n",store_summary)
+print("\nDaily Summary\n",daily_summary)
+
