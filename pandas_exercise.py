@@ -1,4 +1,3 @@
-
 import pandas as pd
 
 #1 Create a pandas DataFrame from the CSV and from Python lists/dicts.
@@ -58,18 +57,27 @@ def sales_etl(df):
     # Transform
     df["is_weekend"] = df["date"].dt.weekday >= 5
 
+    #6 Assignments added below
+    df["total_after_tax"] = df["total"] * 1.18
+    df["day_name"] = df["date"].dt.day_name()
+
     # Summaries
     store_summary = df.groupby("store_name")["total"].sum().reset_index()
     daily_summary = df.groupby("date")["total"].sum().reset_index()
 
+    daily_store_summary = df.groupby(["date", "store_name"])["total"].sum().reset_index()
+
     # Output JSON
     store_summary.to_json("store_sales.json", orient="records", indent=4)
     daily_summary.to_json("daily_sales.json", orient="records", indent=4)
+    daily_store_summary.to_json("daily_store_sales.json", orient="records", indent=4)
 
-    return store_summary, daily_summary
+    df.to_csv("clean_sales.csv", index=False)
 
-store_summary, daily_summary = sales_etl(df)
+    return store_summary, daily_summary, daily_store_summary
+
+store_summary, daily_summary, daily_store_summary = sales_etl(df)
 
 print("\nStore Summary\n",store_summary)
 print("\nDaily Summary\n",daily_summary)
-
+print("\nDaily Store Summary\n",daily_store_summary)
