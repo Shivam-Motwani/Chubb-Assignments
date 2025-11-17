@@ -3,7 +3,7 @@ import pandas as pd
 
 #1 Create a pandas DataFrame from the CSV and from Python lists/dicts.
 df = pd.read_csv("sample.csv")
-print(df.head())
+print("\nDataFrame head\n", df.head())
 
 df["date"] = pd.to_datetime(df["date"])  #date to datetime
 
@@ -13,10 +13,24 @@ df["customer_id"].fillna(-1, inplace=True)
 #2 Filter and subset rows/columns (e.g., sales for a store, date ranges, high-value transactions).
 #Sales only from Downtown store
 downtown_sales = df[df["store_name"] == "Downtown"]
-print(downtown_sales)
+print("\nSales only from Downtown store\n", downtown_sales)
 #Transactions after October 3rd
 after_3 = df[df["date"] > "2025-10-03"]
-print(after_3)
+print("\nTransactions after October 3rd\n", after_3)
 #High-value transactions ( > Rs.5)
 high_value = df[df["total"] > 5]
-print(high_value)
+print("\nHigh-value transactions ( > Rs.5)\n", high_value)
+
+#3 Compute descriptive statistics and group summaries (totals by store, average basket).
+#Total sales by store
+sales_by_store = df.groupby("store_name")["total"].sum()
+print("\nSales by store\n",sales_by_store)
+#Total quantity sold by product
+qty_by_product = df.groupby("product_name")["quantity"].sum()
+print("\nTotal quantity sold by product\n",qty_by_product)
+#Average transaction amount
+avg_transaction = df["total"].mean()
+print("\nAverage transaction amount\n",avg_transaction)
+#Daily sales
+daily_sales = df.groupby("date")["total"].sum()
+print("\nDaily sales\n",daily_sales)
