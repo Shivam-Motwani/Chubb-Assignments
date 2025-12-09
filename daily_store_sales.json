@@ -1,0 +1,37 @@
+[
+    {
+        "date":1759276800000,
+        "store_name":"Downtown",
+        "total":11.0
+    },
+    {
+        "date":1759363200000,
+        "store_name":"Suburb",
+        "total":8.75
+    },
+    {
+        "date":1759449600000,
+        "store_name":"Airport",
+        "total":8.0
+    },
+    {
+        "date":1759449600000,
+        "store_name":"Downtown",
+        "total":3.6
+    },
+    {
+        "date":1759536000000,
+        "store_name":"Airport",
+        "total":3.5
+    },
+    {
+        "date":1759536000000,
+        "store_name":"Downtown",
+        "total":1.6
+    },
+    {
+        "date":1759622400000,
+        "store_name":"Suburb",
+        "total":7.1
+    }
+]
