@@ -1,0 +1,8 @@
+store_id,store_name,city,region,country,latitude,longitude,is_active
+101,Mumbai Central,Mumbai,Maharashtra,India,19.076,72.8777,True
+102,Bengaluru Mall,Bengaluru,Karnataka,India,12.9716,77.5946,True
+201,NYC Downtown,New York,New York,United States,40.7128,-74.006,True
+202,SF Bay Store,San Francisco,California,United States,37.7749,-122.4194,True
+301,London Central,London,England,United Kingdom,51.5074,-0.1278,True
+401,Berlin Mitte,Berlin,Berlin,Germany,52.52,13.405,True
+501,Sydney Harbour,Sydney,NSW,Australia,-33.8688,151.2093,True

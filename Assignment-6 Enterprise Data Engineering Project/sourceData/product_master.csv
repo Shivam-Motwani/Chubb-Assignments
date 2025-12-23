@@ -1,0 +1,6 @@
+product_id,product_name,category,brand,unit_price,is_active
+1,Laptop,Electronics,Dell,800,True
+2,T-Shirt,Apparel,Nike,30,True
+3,Microwave,Home Appliances,Samsung,120,True
+4,Football,Sports,Adidas,25,True
+5,Headphones,Accessories,Sony,60,True
