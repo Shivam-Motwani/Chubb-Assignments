@@ -13,20 +13,21 @@
 ## Table of Contents
 
 - [Project Overview](#1-project-overview)
-- [Business Problem](#2-business-problem)
-- [Solution Architecture](#3-solution-architecture)
+- [Data Schema](#2-data-schema)
+- [Architecture](#3-architecture)
 - [Technology Stack](#4-technology-stack)
-- [Data Architecture](#5-data-architecture-bronzeservergold)
+- [Pipeline Implementation](#5-pipeline-implementation)
 - [Databricks Notebooks](#6-databricks-notebooks)
-- [Airflow Orchestration](#7-airflow-workflow-orchestration)
-- [Data Validation](#8-data-validation--quality-checks)
-- [Visualization](#9-visualization--reporting-power-bi)
-- [Business Insights](#10-key-business-insights)
-- [Testing](#11-testing--validation)
-- [Limitations & Future Work](#12-limitations--future-enhancements)
-- [Repository Structure](#13-repository-structure)
+- [Airflow Workflow Orchestration](#7-airflow-workflow-orchestration)
+- [Data Quality & Validation](#8-data-quality--validation)
+- [Power BI Dashboard](#9-power-bi-dashboard)
+- [Project Structure](#10-project-structure)
+- [Setup & Execution](#11-setup--execution)
+- [Key Analytics Insights](#12-key-analytics-insights)
+- [Implementation Notes](#13-implementation-notes)
 - [Getting Started](#14-getting-started)
-- [Acknowledgements](#15-acknowledgements)
+- [Technical Specifications](#15-technical-specifications)
+- [Acknowledgements](#16-acknowledgements)
 
 ---
 
