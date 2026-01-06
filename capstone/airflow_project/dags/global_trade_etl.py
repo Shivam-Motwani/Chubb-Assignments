@@ -26,4 +26,4 @@ with DAG('global_trade_pipeline', start_date=datetime(2026,1,1),
     t4 = PythonOperator(task_id='capstone_forecasting', python_callable=forecasting)
     t5 = PythonOperator(task_id='capstone_emerging_markets', python_callable=emerging_markets)
 
-    t1 >> t2 >> t3 >> t4 >> t5
+    t1 >> t2 >> t3 >> [t4,t5]

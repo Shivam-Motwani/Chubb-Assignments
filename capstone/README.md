@@ -137,11 +137,11 @@ graph LR
 
 | # | Notebook | Purpose |
 |---|----------|---------|
-| 1 | `01_capstone_bronze.ipynb` | Raw data ingestion (Bronze layer) |
-| 2 | `02_capstone_silver.ipynb` | Data cleaning and standardization |
-| 3 | `03_capstone_gold.ipynb` | Aggregations and KPI generation |
-| 4 | `04_capstone_forecasting.ipynb` | Export trend forecasting |
-| 5 | `05_capstone_emerging_markets.ipynb` | Emerging market identification |
+| 1 | `capstone_bronze.ipynb` | Raw data ingestion (Bronze layer) |
+| 2 | `capstone_silver.ipynb` | Data cleaning and standardization |
+| 3 | `capstone_gold.ipynb` | Aggregations and KPI generation |
+| 4 | `capstone_forecasting.ipynb` | Export trend forecasting |
+| 5 | `capstone_emerging_markets.ipynb` | Emerging market identification |
 
 ---
 
@@ -164,7 +164,7 @@ graph LR
     A[capstone_bronze] --> B[capstone_silver]
     B --> C[capstone_gold]
     C --> D[capstone_forecasting]
-    D --> E[capstone_emerging_markets]
+    C --> E[capstone_emerging_markets]
 ```
 
 **Pipeline Flow:**
