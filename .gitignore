@@ -1,0 +1,22 @@
+﻿# Python virtual environments
+airflow_env1/
+airflow_env_2/
+airflow_env/
+.venv/
+venv/
+env/
+
+# Airflow specific
+*.pid
+airflow-webserver.pid
+airflow.db
+logs/
+__pycache__/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

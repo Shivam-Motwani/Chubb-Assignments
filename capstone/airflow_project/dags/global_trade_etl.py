@@ -1,29 +1,58 @@
 from airflow import DAG
-from airflow.operators.python import PythonOperator
-from datetime import datetime, timedelta
+from airflow.providers.databricks.operators.databricks import DatabricksSubmitRunOperator
+from datetime import datetime
 
-def bronze_ingestion():
-    pass  # call Databricks job or notebook
+with DAG(
+    dag_id="global_trade_pipeline",
+    start_date=datetime(2025, 1, 1),
+    schedule_interval="@daily",
+    catchup=False,
+    default_args={"retries": 1},
+) as dag:
 
-def silver_cleaning():
-    pass  # call Databricks job
+    bronze = DatabricksSubmitRunOperator(
+        task_id="capstone_bronze",
+        databricks_conn_id="databricks_default",
+        existing_cluster_id="0106-195339-tj02a9ds",
+        notebook_task={
+            "notebook_path": "/Workspace/Users/shivam.motwani2022@vitstudent.ac.in/Drafts/capstone_bronze"
+        },
+    )
 
-def gold_kpis():
-    pass  # call Databricks job
+    silver = DatabricksSubmitRunOperator(
+        task_id="capstone_silver",
+        databricks_conn_id="databricks_default",
+        existing_cluster_id="0106-195339-tj02a9ds",
+        notebook_task={
+            "notebook_path": "/Workspace/Users/shivam.motwani2022@vitstudent.ac.in/Drafts/capstone_silver"
+        },
+    )
 
-def forecasting():
-    pass  # call Databricks job
+    gold = DatabricksSubmitRunOperator(
+        task_id="capstone_gold",
+        databricks_conn_id="databricks_default",
+        existing_cluster_id="0106-195339-tj02a9ds",
+        notebook_task={
+            "notebook_path": "/Workspace/Users/shivam.motwani2022@vitstudent.ac.in/Drafts/capstone_gold"
+        },
+    )
 
-def emerging_markets():
-    pass  # call Databricks job
+    forecasting = DatabricksSubmitRunOperator(
+        task_id="capstone_forecasting",
+        databricks_conn_id="databricks_default",
+        existing_cluster_id="0106-195339-tj02a9ds",
+        notebook_task={
+            "notebook_path": "/Workspace/Users/shivam.motwani2022@vitstudent.ac.in/Drafts/capstone_forcasting"
+        },
+    )
 
-with DAG('global_trade_pipeline', start_date=datetime(2026,1,1),
-         schedule_interval='@daily', catchup=False, default_args={'retries':1}) as dag:
+    emerging = DatabricksSubmitRunOperator(
+        task_id="capstone_emerging_markets",
+        databricks_conn_id="databricks_default",
+        existing_cluster_id="0106-195339-tj02a9ds",
+        notebook_task={
+            "notebook_path": "/Workspace/Users/shivam.motwani2022@vitstudent.ac.in/Drafts/capstone_emerging_markets"
+        },
+    )
 
-    t1 = PythonOperator(task_id='captone_bronze', python_callable=bronze_ingestion)
-    t2 = PythonOperator(task_id='capstone_silver', python_callable=silver_cleaning)
-    t3 = PythonOperator(task_id='capstone_gold', python_callable=gold_kpis)
-    t4 = PythonOperator(task_id='capstone_forecasting', python_callable=forecasting)
-    t5 = PythonOperator(task_id='capstone_emerging_markets', python_callable=emerging_markets)
-
-    t1 >> t2 >> t3 >> [t4,t5]
+    bronze >> silver >> gold >> [forecasting, emerging]
