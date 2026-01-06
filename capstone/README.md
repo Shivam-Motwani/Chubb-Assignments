@@ -164,7 +164,7 @@ graph LR
     A[capstone_bronze] --> B[capstone_silver]
     B --> C[capstone_gold]
     C --> D[capstone_forecasting]
-    C --> E[capstone_emerging_markets]
+    D --> E[capstone_emerging_markets]
 ```
 
 **Pipeline Flow:**
